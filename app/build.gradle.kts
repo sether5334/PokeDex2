@@ -9,11 +9,10 @@ android {
 
     defaultConfig {
         applicationId = "com.example.pokedex"
-        minSdk = 33
-        targetSdk = 33
+        minSdk = 31
+        targetSdk = 31
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
