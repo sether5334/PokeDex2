@@ -28,20 +28,28 @@ class PokemonLoader (private val context: Context) {
                     callback.invoke(null)
                 }
             }
-
             override fun onFailure(call: Call<Pokemon>, t: Throwable) {
                 callback.invoke(null)
             }
         })
     }
     // Método para obtener la URL de la imagen del Pokémon
+    // ejemplo de URL pra obtener imagen https://assets.pokemon.com/assets/cms2/img/pokedex/full/063.png
     fun getPokemonImageUrl(pokemonId: Int): String {
-        return "https://pokeres.bastionbot.org/images/pokemon/$pokemonId.png"
+        return when{
+            pokemonId>=100-> "https://assets.pokemon.com/assets/cms2/img/pokedex/full/$pokemonId.png"
+            pokemonId>=10-> "https://assets.pokemon.com/assets/cms2/img/pokedex/full/0$pokemonId.png"
+            else->"https://assets.pokemon.com/assets/cms2/img/pokedex/full/00$pokemonId.png"
+        }
+        /*
+        se obta por when en lugar de if para eliminar el else if
+        if(pokemonId>+100){return "https://assets.pokemon.com/assets/cms2/img/pokedex/full/$pokemonId.png"}
+             else if(pokemonId>=10){return "https://assets.pokemon.com/assets/cms2/img/pokedex/full/0$pokemonId.png"
+             } else{return "https://assets.pokemon.com/assets/cms2/img/pokedex/full/00$pokemonId.png"}*/
     }
 
     fun loadPokemonImageIntoView(pokemonId: Int, imageView: ImageView) {
         val imageUrl = getPokemonImageUrl(pokemonId)
-
         Glide.with(context)
             .load(imageUrl)
             .into(imageView)

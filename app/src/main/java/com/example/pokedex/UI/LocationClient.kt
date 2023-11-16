@@ -1,3 +1,5 @@
+package com.example.pokedex.UI
+
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
@@ -34,7 +36,7 @@ class LocationClient (private val context: Context, private val locationCallback
                     showToast("Te has movido 10 metros desde tu posición original")
                     VibrationPhone()
                 }
-                println("sigues en un parametro dentro delos 10 metros  Latitud: ${location.latitude}, Longitud: ${location.longitude}")
+               // println("sigues en un parametro dentro delos 10 metros  Latitud: ${location.latitude}, Longitud: ${location.longitude}")
             }
 
             override fun onStatusChanged(

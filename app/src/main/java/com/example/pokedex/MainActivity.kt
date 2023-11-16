@@ -1,6 +1,6 @@
 package com.example.pokedex
 
-import LocationClient
+import com.example.pokedex.UI.LocationClient
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -33,7 +33,8 @@ class MainActivity : AppCompatActivity() {
         buttonLoadPokemon.setOnClickListener {
             pokemonLoader.loadRandomPokemon { pokemon ->
                 if (pokemon != null) {
-                    val infoText = "Nombre: ${pokemon.name}\nAltura: ${pokemon.height}\nPeso: ${pokemon.weight}"
+
+                    val infoText = "Nombre: ${pokemon.name}\nbaseExperience: ${pokemon.baseExperience}\nheight: ${pokemon.height}"
                     textViewPokemonInfo.text = infoText
 
                     // Utiliza Glide para cargar la imagen
